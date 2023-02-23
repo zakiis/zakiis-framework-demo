@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: zakiis-log-demo
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    
+zakiis:
+  log:
+    trace-id:
+      app-name: LOG_DEMO
+    desensitization:
+      replace-fields: userName,mobile
+      erase-fields: age,password
+      drop-fields: sex
