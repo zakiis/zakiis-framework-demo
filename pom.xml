@@ -24,7 +24,9 @@
 	</properties>
 	
 	<modules>
+		<module>zakiis-job-demo</module>
 		<module>zakiis-log-demo</module>
+		<module>zakiis-web-demo</module>
 	</modules>
 	
 	<dependencyManagement>

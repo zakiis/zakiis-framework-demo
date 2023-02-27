@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: zakiis-web-demo
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    
+zakiis:
+  web:
+    damboard:
+      rules:
+      - path: /demo/notExistsPath
+        response: '{"status":"000000", "data": "response from damboard in fake path."}'
+        
