@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: zakiis-security-demo
+  data:
+    redis:
+      host: 192.168.137.101
+      port: 6379
+      password: 123456
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    
+zakiis:
+  security:
+    authorization:
+      skip-path:
+      - /error
+      error-response-text: '{"code":"401", "msg":"Unauthorized"}'
