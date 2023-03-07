@@ -37,6 +37,7 @@ public class SecurityDemoApplicationTests {
 		userInfoQuery(jwtToken);
 		userInfoDelete(jwtToken);
 		testOptimisticLock(jwtToken);
+		testRateLimit();
 	}
 
 	private String login() {
@@ -107,6 +108,21 @@ public class SecurityDemoApplicationTests {
 					new ParameterizedTypeReference<Response<Object>>() {});
 			log.info("modify user returns:{}", responseEntity.getBody());
 		});
+		
+	}
+	
+	private void testRateLimit() throws InterruptedException {
+		String url = String.format("http://localhost:%s/auth/code?phone=%s", port, "13612342341");
+		ResponseEntity<Response<String>> responseEntity = restTemplate.exchange(url, HttpMethod.POST, null,
+				new ParameterizedTypeReference<Response<String>>() {});
+		log.info("POST /auth/code returns:{}", responseEntity.getBody());
+		responseEntity = restTemplate.exchange(url, HttpMethod.POST, null,
+				new ParameterizedTypeReference<Response<String>>() {});
+		log.info("POST /auth/code returns:{}", responseEntity.getBody());
+		Thread.sleep(10 * 1000L);
+		responseEntity = restTemplate.exchange(url, HttpMethod.POST, null,
+				new ParameterizedTypeReference<Response<String>>() {});
+		log.info("POST /auth/code returns:{}", responseEntity.getBody());
 		
 	}
 

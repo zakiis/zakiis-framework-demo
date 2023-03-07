@@ -2,15 +2,18 @@ package com.zakiis.security.demo.controller;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zakiis.core.exception.ZakiisRuntimeException;
 import com.zakiis.core.util.JsonUtil;
 import com.zakiis.security.annotation.Permission;
+import com.zakiis.security.annotation.RateLimit;
 import com.zakiis.security.demo.domain.constants.SecurityConstant;
 import com.zakiis.security.demo.domain.dto.Response;
 import com.zakiis.security.demo.domain.dto.user.LoginRequest;
@@ -45,5 +48,12 @@ public class AuthController {
 			.withClaim("userInfo", JsonUtil.toJson(userInfo))
 			.sign(Algorithm.HMAC256(SecurityConstant.HMAC_SHA_256_KEY));
 		return Response.success(token);
+	}
+	
+	@PostMapping("code")
+	@Permission(bypass = true)
+	@RateLimit(limitKeyEL = "#phone", minIntervalEL = "10", maxRequestPerDayEL = "5")
+	public Response<String> sendCode(@RequestParam String phone) {
+		return Response.success(RandomStringUtils.randomNumeric(4));
 	}
 }
