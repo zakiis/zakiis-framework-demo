@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: zakiis-rdb-demo
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.137.101:3306/zakiis-rdb?serverTimezone=GMT%2b8&useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&allowMultiQueries=true& allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    druid:
+      initial-size: 1
+      max-active: 1
+      min-idle: 1
+      max-wait: 6000  #get connection max wait time in millisecond
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 10
+      validation-query: select 1
+      validation-query-timeout: 5
+      #valid-connection-checker-class-name: com.zakiis.rdb.druid.MySqlValidConnectionChecker
+      test-on-borrow: true
+      test-on-return: false
+      test-while-idle: false
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 60000
+      max-evictable-idle-time-millis: 300000
+      keep-alive: true
+      keep-alive-between-time-millis: 60000
+      phy-max-use-count: -1   # a conn will be close if it had been used for speceifed times.
+
+mybatis-plus:
+  mapper-locations:
+  - classpath:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+zakiis:
+  rdb:
+    print-sql:
+      enabled: true
+    cipher:
+      enabled: true
+      secret: a753343ebda64ea7917287bc09dd68c69605544e827f0f08b9c79527cd9897b9
+      iv: 29449b0409bd8a93490c58a630ffaa0c
+      enable-fuzzy-query: true
+      

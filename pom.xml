@@ -26,8 +26,9 @@
 	<modules>
 		<module>zakiis-job-demo</module>
 		<module>zakiis-log-demo</module>
-		<module>zakiis-web-demo</module>
+		<module>zakiis-rdb-demo</module>
 		<module>zakiis-security-demo</module>
+		<module>zakiis-web-demo</module>
 	</modules>
 	
 	<dependencyManagement>
