@@ -19,13 +19,3 @@ create table address (
   zip_code varchar(128),
   details varchar(256)
 ) engine = 'InnoDB' default charset 'UTF8MB4' comment 'address';
-
-drop table if exists archive;
-create table archive (
-  id bigint auto_increment primary key,
-  field1 json,
-  field2 decimal(15,2),
-  add_time datetime,
-  add_time2 timestamp,
-  add_time3 date
-) engine = 'InnoDB' default charset 'UTF8MB4' comment 'archive_test';

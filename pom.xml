@@ -24,6 +24,7 @@
 	</properties>
 	
 	<modules>
+		<module>zakiis-gateway-demo</module>
 		<module>zakiis-job-demo</module>
 		<module>zakiis-log-demo</module>
 		<module>zakiis-rdb-demo</module>

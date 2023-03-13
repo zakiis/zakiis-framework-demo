@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        group: DEFAULT_GROUP
+        namespace: zakiis
+      discovery:
+        namespace: zakiis
+      server-addr: 192.168.137.101:8848
+      username: nacos
+      password: nacos

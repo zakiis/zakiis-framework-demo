@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: zakiis-gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      loadbalancer:
+        use404: false
+      httpclient:
+        connect-timeout: 5000
+        response-timeout: PT60S
+    loadbalancer:
+      cache:
+        ttl: PT2S
+
+server:
+  port: 8081
+  servlet:
+    context-path: /
+    
+zakiis:
+  gateway:
+    log-request:
+      enabled: true
+    trace-id:
+      enabled: true
+      http-header-key: Trace-Id
+      prefix: GW_
+        

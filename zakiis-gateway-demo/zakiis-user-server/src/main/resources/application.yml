@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: zakiis-user-server
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    
+zakiis:
+  security:
+    authorization:
+      enabled: false
+  log:
+    trace-id:
+      enabled: true
+      app-name: ZK_USER
+      header: Trace-Id
+  web:
+    damboard:
+      enabled: false
+        
